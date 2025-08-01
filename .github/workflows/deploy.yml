@@ -34,5 +34,5 @@ jobs:
         run: |
           dotnet lambda deploy-function MyLambdaFunctionDemo \
             --project-location ./src/MyLambdaFunctionDemo \
-            --region $AWS_REGION
+            --region $AWS_REGION \
             --function-role arn:aws:iam::570829448606:role/Aws_Test_Profile_Role
