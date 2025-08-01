@@ -16,6 +16,16 @@ public class Function
     /// <returns></returns>
     public string FunctionHandler(string input, ILambdaContext context)
     {
+          context.Logger.LogLine($"Received input: {input}");
+  if (string.IsNullOrEmpty(input))
+  {
+      context.Logger.LogLine("Input is null or empty.");
+      return "Input cannot be null or empty.";
+  }
+
+
+
+  context.Logger.LogLine("Processing input...");
         return input.ToUpper();
     }
 }
