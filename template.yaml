@@ -1,14 +1,22 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: .NET 8 Lambda with CloudWatch Scheduled Trigger
+
 Resources:
-  MyLambdaFunction:
+  MyScheduledLambda:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: MyLambdaEveryMinute
-      CodeUri: ./src/MyLambdaFunctionDemo/
-      Handler: MyLambdaFunctionDemo::MyLambdaFunctionDemo.Function::FunctionHandler
       Runtime: dotnet8
-      Role: arn:aws:iam::570829448606:role/Aws_Test_Profile_Role
+      Handler: AwsLambdaDemo::AwsLambdaDemo.Function::FunctionHandler
+      CodeUri: ./src/AwsLambdaDemo/
+      MemorySize: 256
+      Timeout: 30
+      Role: arn:aws:iam::123456789012:role/lambda-execution-role
       Events:
-        EveryMinuteTrigger:
+        CronSchedule:
           Type: Schedule
           Properties:
-            Schedule: cron(* * * * ? *)
+            Schedule: cron(* * * * ? *)   # 🔁 Every minute
+            Name: MyLambdaEveryMinuteRule
+            Description: Trigger Lambda every minute via CloudWatch Event
