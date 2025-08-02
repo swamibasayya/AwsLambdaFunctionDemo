@@ -41,5 +41,6 @@ jobs:
             --stack-name MyLambdaFunctionDemoStack \
             --capabilities CAPABILITY_IAM \
             --region $AWS_REGION \
-            --resolve-s3
+            --resolve-s3 \
+            --s3-bucket rosterdata2025 \
             
