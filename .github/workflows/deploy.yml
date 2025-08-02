@@ -36,18 +36,4 @@ jobs:
             --project-location ./src/MyLambdaFunctionDemo \
             --region $AWS_REGION \
             --function-role arn:aws:iam::570829448606:role/Aws_Test_Profile_Role \
-      - name: Package SAM Template
-        run: |
-          sam package \
-            --template-file serverless.template \
-            --output-template-file packaged.yaml \
-            --s3-bucket rosterdata2025 }
-      - name: Deploy SAM Stack
-        run: |
-           sam deploy \
-            --template-file serverless.template \
-            --stack-name MyLambdaFunctionDemoStack \
-            --capabilities CAPABILITY_IAM \
-            --region $AWS_REGION \
-            --s3-bucket rosterdata2025 \
             
