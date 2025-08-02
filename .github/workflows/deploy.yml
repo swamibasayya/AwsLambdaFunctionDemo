@@ -37,9 +37,4 @@ jobs:
             --region $AWS_REGION \
             --function-role arn:aws:iam::570829448606:role/Aws_Test_Profile_Role   
             
-           sam package \
-          --template-file template.yaml \
-          --s3-bucket rosterdata2025  \
-          --output-template-file packaged.yaml
-           
-            
+                  
