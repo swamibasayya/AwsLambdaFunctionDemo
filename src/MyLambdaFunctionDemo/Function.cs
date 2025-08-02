@@ -34,28 +34,37 @@ public class Function
         var key = $"Crew-Data-{DateTime.UtcNow:yyyy-MM-dd-HH-mm-ss}.txt";
         var content = "Sample content from .NET Lambda";
 
-        var putRequest = new PutObjectRequest
-        {
-            BucketName = bucketName,
-            Key = key,
-            ContentBody = content,
-            ContentType = "text/plain"
-        };
-        context.Logger.LogLine($"File name{key}");
 
-        try
+        for (int i = 0; i < 5; i++)
         {
-            var response = await _s3Client.PutObjectAsync(putRequest);
-            return $"Uploaded to s3://{bucketName}/{key}";
+
+
+            var putRequest = new PutObjectRequest
+            {
+                BucketName = bucketName,
+                Key = key,
+                ContentBody = content,
+                ContentType = "text/plain"
+            };
+            context.Logger.LogLine($"File name{key}");
+
+            try
+            {
+                var response = await _s3Client.PutObjectAsync(putRequest);
+                return $"Uploaded to s3://{bucketName}/{key}";
+            }
+
+            catch (Exception ex)
+            {
+                return $"Error: {ex.Message}";
+            }
+           
         }
-        catch (Exception ex)
-        {
-            return $"Error: {ex.Message}";
-        }
+        return $"Uploaded to s3://{bucketName}/{key}";
 
 
-        
-        
-         
+
+
+
     }
 }
