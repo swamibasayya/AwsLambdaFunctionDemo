@@ -1,0 +1,25 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Transform": "AWS::Serverless-2016-10-31",
+  "Resources": {
+    "MyScheduledLambda": {
+      "Type": "AWS::Serverless::Function",
+      "Properties": {
+        "FunctionName": "AwsLambdaFunctionDemo",
+        "Handler": "AwsLambdaFunctionDemo::AwsLambdaFunctionDemo.Function::FunctionHandler",
+        "Runtime": "dotnet8",
+        "CodeUri": "",
+        "MemorySize": 256,
+        "Timeout": 30,
+        "Events": {
+          "FiveMinuteTrigger": {
+            "Type": "Schedule",
+            "Properties": {
+              "Schedule": "rate(5 minutes)"
+            }
+          }
+        }
+      }
+    }
+  }
+}
