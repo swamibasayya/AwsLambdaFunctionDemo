@@ -36,4 +36,5 @@ jobs:
             --project-location ./src/MyLambdaFunctionDemo \
             --region $AWS_REGION \
             --function-role arn:aws:iam::570829448606:role/Aws_Test_Profile_Role \
+            --environment-variables "ENV1=Dev;ENV2=Production"
                    
